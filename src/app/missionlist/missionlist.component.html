@@ -1,0 +1,22 @@
+<div *ngIf="missions.length > 0; else loading">
+    <div *ngFor="let mission of missions" class="mission-card">
+      <img [src]="mission.links?.mission_patch_small" alt="Mission Patch" class="mission-patch">
+      <h3>{{ mission.mission_name }} ({{ mission.launch_year }})</h3>
+      <p><strong>Flight Number:</strong> {{ mission.flight_number }}</p>
+      <p><strong>Details:</strong> {{ mission.details || 'No details available' }}</p>
+  
+      <h4>Rocket Details</h4>
+      <p><strong>Name:</strong> {{ mission.rocket?.rocket_name }}</p>
+      <p><strong>Type:</strong> {{ mission.rocket?.rocket_type }}</p>
+  
+      <h4>Links</h4>
+      <p><a [href]="mission.links?.article_link" target="_blank">Article</a></p>
+      <p><a [href]="mission.links?.wikipedia" target="_blank">Wikipedia</a></p>
+      <p><a [href]="mission.links?.video_link" target="_blank">Watch Video</a></p>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading missions...</p>
+  </ng-template>
+  
