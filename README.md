@@ -5,7 +5,9 @@
 ### Features
 
 1. **Shows list of missions**
+   ![alt text](./public/main_page.png)
 2. **Shows details about the mission**
+   ![alt text](./public/mission_detials_page.png)
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
 
