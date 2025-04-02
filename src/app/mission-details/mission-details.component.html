@@ -1,12 +1,47 @@
-<div *ngIf="missionDetails; else loading">
-    <h2>{{ missionDetails.mission_name }}</h2>
-    <img [src]="missionDetails.links?.mission_patch" alt="Mission Patch">
-    <p><strong>Launch Year:</strong> {{ missionDetails.launch_year }}</p>
-    <p><strong>Details:</strong> {{ missionDetails.details || 'No details available' }}</p>
-    <a [href]="missionDetails.links?.article_link" target="_blank">Read More</a>
+<div class="mission-details-page">
+  <p class="mission-details-heading">{{ missionDetails.mission_name }} Details:</p>
+
+  <div *ngIf="missionDetails; else loading" class="mission-details-container">
+    <img [src]="missionDetails.links?.mission_patch" alt="Mission Patch" class="mission-details-image">
+    
+    <div class="mission-info">
+      <div class="mission-info-item">
+        <p class="mission-info-title">Launch Year:</p>
+        <p class="mission-info-value">{{ missionDetails.launch_year }}</p>
+      </div>
+
+      <div class="mission-info-item">
+        <p class="mission-info-title">Rocket:</p>
+        <p class="mission-info-value">{{ missionDetails.rocket.rocket_name }}</p>
+      </div>
+
+      <div class="mission-info-item">
+        <p class="mission-info-title">Details:</p>
+        <p class="mission-info-value">{{ missionDetails.details || 'No details available' }}</p>
+      </div>
+
+      <div class="mission-info-item">
+        <p class="mission-info-title">Launch Status:</p>
+        <p class="mission-info-value">
+          <span *ngIf="missionDetails.launch_success; else unsuccessful" class="launch-success">
+            Launched Successfully
+          </span>
+          <ng-template #unsuccessful>
+            <span class="launch-failed">Launch Unsuccessful</span>
+          </ng-template>
+        </p>
+      </div>      
+
+    </div>
+
+    <div class="mission-links">
+      <a [href]="missionDetails.links?.article_link" target="_blank" class="mission-link">🗒️ Article</a>
+      <a [href]="missionDetails.links?.video_link" target="_blank" class="mission-link">🎥 Video</a>
+      <a [href]="missionDetails.links?.wikipedia" target="_blank" class="mission-link">🌐 Wiki</a>
+    </div>
   </div>
-  
+
   <ng-template #loading>
-    <p>Loading mission details...</p>
+    <p class="loading-text">Loading mission details...</p>
   </ng-template>
-  
+</div>

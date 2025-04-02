@@ -1,10 +1,18 @@
-<app-missionfilter (filterChanged)="filterMissions($event)"></app-missionfilter>
+<div class="missions-list-page">
+  <p class="mission-list-page-heading">Welcome to SpaceX Missions</p>
 
-<div *ngFor="let mission of filteredMissions" class="mission-card">
-  <img [src]="mission.links?.mission_patch_small" alt="Mission Patch" class="mission-patch">
-  <h3>{{ mission.mission_name }}</h3>
-  <p><strong>Launch Year:</strong> {{ mission.launch_year }}</p>
-  <p><strong>Details:</strong> {{ mission.details || 'No details available' }}</p>
-  
-  <button (click)="viewDetails(mission.flight_number)">View Details</button>
+  <app-missionfilter (filterChanged)="filterMissions($event)"></app-missionfilter>
+
+  <div class="mission-container">
+    <div *ngFor="let mission of filteredMissions" 
+        class="mission-card" 
+        (click)="viewDetails(mission.flight_number)">
+      
+      <h3>{{ mission.mission_name }}</h3>
+      <img [src]="mission.links?.mission_patch_small" alt="Mission Patch" class="mission-patch">
+      <div class="mission-card-detials-container"><p class="mission-card-sub-title">Launch Year:</p><p class="mission-card-details-value"> {{ mission.launch_year }}</p></div>
+      <div class="mission-card-detials-container"><p class="mission-card-sub-title">Details:</p><p class="mission-card-details-value"> {{ mission.details || 'No details available' }}</p></div>
+
+    </div>
+  </div>
 </div>

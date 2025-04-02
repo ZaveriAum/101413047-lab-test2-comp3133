@@ -1,0 +1,91 @@
+.mission-details-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #F1EFEC;
+}
+
+.mission-details-heading {
+    font-size: xx-large;
+    font-weight: bolder;
+    padding: 20px;
+    color: #123458;
+}
+
+.mission-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D4C9BE;
+    border-radius: 10px;
+    padding: 20px;
+    width: 350px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.mission-details-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.mission-info {
+    width: 100%;
+}
+
+.mission-info-item {
+    display: flex;
+    padding: 5px 0;
+}
+
+.mission-info-title {
+    font-weight: bold;
+    color: #123458;
+}
+
+.mission-info-value {
+    flex-grow: 1;
+    margin-left: 10px;
+    color: #030303;
+}
+
+.launch-success {
+    color: green;
+    font-weight: bold;
+}
+
+.launch-failed {
+    color: red;
+    font-weight: bold;
+}
+
+.launch-success, .launch-failed {
+    display: inline-block;
+    width: 100%;
+}
+
+.mission-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.mission-link {
+    text-decoration: none;
+    color: #123458;
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.mission-link:hover {
+    transform: scale(1.1);
+    color: #030303;
+}
+
+.loading-text {
+    font-size: 16px;
+    color: #123458;
+}
