@@ -1,5 +1,12 @@
 # 101413047LabTest2Comp3133
 
+## Displays all the Missions done by Space X
+
+### Features
+
+1. **Shows list of missions**
+2. **Shows details about the mission**
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
 
 ## Development server
