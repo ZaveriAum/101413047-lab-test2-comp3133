@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpaceXService } from '../services/space-x.service';
 import { MissionFilterComponent } from '../missionfilter/missionfilter.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-missionlist',
@@ -10,11 +11,16 @@ import { MissionFilterComponent } from '../missionfilter/missionfilter.component
   templateUrl: './missionlist.component.html',
   styleUrls: ['./missionlist.component.css']
 })
+
 export class MissionlistComponent implements OnInit {
   missions: any[] = [];
   filteredMissions: any[] = [];
 
-  constructor(private spaceXService: SpaceXService) {}
+  constructor(
+    private spaceXService: SpaceXService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.spaceXService.getLaunches().subscribe((data) => {
@@ -29,5 +35,11 @@ export class MissionlistComponent implements OnInit {
     } else {
       this.filteredMissions = [...this.missions];
     }
+  }
+
+  viewDetails(missionId: number) {
+    this.router.navigate(['/mission-details', missionId]).then(() => {
+      this.cdr.detectChanges();
+    });
   }
 }

@@ -5,4 +5,6 @@
   <h3>{{ mission.mission_name }}</h3>
   <p><strong>Launch Year:</strong> {{ mission.launch_year }}</p>
   <p><strong>Details:</strong> {{ mission.details || 'No details available' }}</p>
+  
+  <button (click)="viewDetails(mission.flight_number)">View Details</button>
 </div>

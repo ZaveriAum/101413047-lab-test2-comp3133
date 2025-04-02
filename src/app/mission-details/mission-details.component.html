@@ -1,0 +1,12 @@
+<div *ngIf="missionDetails; else loading">
+    <h2>{{ missionDetails.mission_name }}</h2>
+    <img [src]="missionDetails.links?.mission_patch" alt="Mission Patch">
+    <p><strong>Launch Year:</strong> {{ missionDetails.launch_year }}</p>
+    <p><strong>Details:</strong> {{ missionDetails.details || 'No details available' }}</p>
+    <a [href]="missionDetails.links?.article_link" target="_blank">Read More</a>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading mission details...</p>
+  </ng-template>
+  

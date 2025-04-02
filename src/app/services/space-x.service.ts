@@ -13,4 +13,8 @@ export class SpaceXService {
   getLaunches(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+  getMissionDetails(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
 }
