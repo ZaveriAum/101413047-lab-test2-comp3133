@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpaceXService } from '../services/space-x.service';
+import { MissionFilterComponent } from '../missionfilter/missionfilter.component';
 
 @Component({
   selector: 'app-missionlist',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, MissionFilterComponent],
   templateUrl: './missionlist.component.html',
-  styleUrl: './missionlist.component.css'
+  styleUrls: ['./missionlist.component.css']
 })
-
 export class MissionlistComponent implements OnInit {
   missions: any[] = [];
   filteredMissions: any[] = [];
