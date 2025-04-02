@@ -4,15 +4,20 @@
   <app-missionfilter (filterChanged)="filterMissions($event)"></app-missionfilter>
 
   <div class="mission-container">
-    <div *ngFor="let mission of filteredMissions" 
-        class="mission-card" 
-        (click)="viewDetails(mission.flight_number)">
-      
-      <h3>{{ mission.mission_name }}</h3>
-      <img [src]="mission.links?.mission_patch_small" alt="Mission Patch" class="mission-patch">
-      <div class="mission-card-detials-container"><p class="mission-card-sub-title">Launch Year:</p><p class="mission-card-details-value"> {{ mission.launch_year }}</p></div>
-      <div class="mission-card-detials-container"><p class="mission-card-sub-title">Details:</p><p class="mission-card-details-value"> {{ mission.details || 'No details available' }}</p></div>
+    <mat-card *ngFor="let mission of filteredMissions" class="mission-card" (click)="viewDetails(mission.flight_number)">
+      <mat-card-header>
+        <mat-card-title>{{ mission.mission_name }}</mat-card-title>
+      </mat-card-header>
 
-    </div>
+      <img mat-card-image [src]="mission.links?.mission_patch_small" alt="Mission Patch" class="mission-patch">
+      <mat-card-content>
+        <p><strong>Launch Year:</strong> {{ mission.launch_year }}</p>
+        <p><strong>Details:</strong> {{ mission.details || 'No details available' }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button>View Details</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

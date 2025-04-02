@@ -3,17 +3,31 @@ import { CommonModule } from '@angular/common';
 import { SpaceXService } from '../services/space-x.service';
 import { MissionFilterComponent } from '../missionfilter/missionfilter.component';
 import { Router } from '@angular/router';
+import { Mission } from '../mission';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-missionlist',
   standalone: true,
-  imports: [CommonModule, MissionFilterComponent],
+  imports: [
+    CommonModule,
+    MissionFilterComponent,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule
+  ],
   templateUrl: './missionlist.component.html',
   styleUrls: ['./missionlist.component.css']
 })
 
 export class MissionlistComponent implements OnInit {
-  missions: any[] = [];
+  missions: Mission[] = [];
   filteredMissions: any[] = [];
 
   constructor(

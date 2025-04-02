@@ -24,7 +24,7 @@
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
-.mission-details-image {
+.mission-img {
     width: 120px;
     height: 120px;
     object-fit: contain;

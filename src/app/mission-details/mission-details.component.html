@@ -1,47 +1,43 @@
 <div class="mission-details-page">
-  <p class="mission-details-heading">{{ missionDetails.mission_name }} Details:</p>
+  <h1 class="mission-details-heading">{{ missionDetails?.mission_name }} Details:</h1>
 
   <div *ngIf="missionDetails; else loading" class="mission-details-container">
-    <img [src]="missionDetails.links?.mission_patch" alt="Mission Patch" class="mission-details-image">
-    
-    <div class="mission-info">
-      <div class="mission-info-item">
-        <p class="mission-info-title">Launch Year:</p>
-        <p class="mission-info-value">{{ missionDetails.launch_year }}</p>
-      </div>
+    <mat-card class="mission-detail-card">
+      <img mat-card-image [src]="missionDetails.links?.mission_patch" alt="Mission Patch" class="mission-img">
+      
+      <mat-card-content>
+        <p><strong>Launch Year:</strong> {{ missionDetails.launch_year }}</p>
+        <p><strong>Rocket:</strong> {{ missionDetails.rocket?.rocket_name }}</p>
+        <p><strong>Details:</strong> {{ missionDetails.details || 'No details available' }}</p>
 
-      <div class="mission-info-item">
-        <p class="mission-info-title">Rocket:</p>
-        <p class="mission-info-value">{{ missionDetails.rocket.rocket_name }}</p>
-      </div>
+        <div class="mission-info-item">
+          <p class="mission-info-title">Launch Status:</p>
+          <p class="mission-info-value">
+            <span *ngIf="missionDetails.launch_success; else unsuccessful" class="launch-success">
+              Launched Successfully
+            </span>
+            <ng-template #unsuccessful>
+              <span class="launch-failed">Launch Unsuccessful</span>
+            </ng-template>
+          </p>
+        </div>
 
-      <div class="mission-info-item">
-        <p class="mission-info-title">Details:</p>
-        <p class="mission-info-value">{{ missionDetails.details || 'No details available' }}</p>
-      </div>
-
-      <div class="mission-info-item">
-        <p class="mission-info-title">Launch Status:</p>
-        <p class="mission-info-value">
-          <span *ngIf="missionDetails.launch_success; else unsuccessful" class="launch-success">
-            Launched Successfully
-          </span>
-          <ng-template #unsuccessful>
-            <span class="launch-failed">Launch Unsuccessful</span>
-          </ng-template>
-        </p>
-      </div>      
-
-    </div>
-
-    <div class="mission-links">
-      <a [href]="missionDetails.links?.article_link" target="_blank" class="mission-link">🗒️ Article</a>
-      <a [href]="missionDetails.links?.video_link" target="_blank" class="mission-link">🎥 Video</a>
-      <a [href]="missionDetails.links?.wikipedia" target="_blank" class="mission-link">🌐 Wiki</a>
-    </div>
+        <div class="mission-links">
+          <a mat-icon-button [href]="missionDetails.links?.article_link" target="_blank" matTooltip="Read More">
+            <mat-icon>article</mat-icon>
+          </a>
+          <a mat-icon-button [href]="missionDetails.links?.video_link" target="_blank" matTooltip="Watch Video">
+            <mat-icon>video_library</mat-icon>
+          </a>
+          <a mat-icon-button [href]="missionDetails.links?.wikipedia" target="_blank" matTooltip="Wikipedia">
+            <mat-icon>public</mat-icon>
+          </a>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 
   <ng-template #loading>
-    <p class="loading-text">Loading mission details...</p>
+    <mat-spinner diameter="50"></mat-spinner> Loading mission details...
   </ng-template>
 </div>
